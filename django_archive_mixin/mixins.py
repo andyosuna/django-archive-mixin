@@ -11,11 +11,11 @@ class ArchiveMixin(models.Model):
     mark it as deleted, and it will not show up in the default queryset. If you
     want to see all objects, including the ones marked as deleted, use:
 
-        ArchiveModel.objects.all_objects.all()
+        ArchiveModel.objects.deleted_qs.all()
 
     If you want to just see the ones marked as deleted, use:
 
-        ArchiveModel.objects.deleted.all()
+        ArchiveModel.objects.deleted_qs.filter(deleted_on__isnull=False)
     """
     deleted_on = models.DateTimeField(null=True, blank=True)
 
